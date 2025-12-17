@@ -28,10 +28,9 @@ namespace DungeonCrawlerV9
             Rooms = CreateDungoenByLevel();
             rows = Rooms.GetLength(0);
             cols = Rooms.GetLength(1);
-            SetRoomPosition();  // test
-            //SubscribeToRooms();
+            SetRoomPosition();
             events.RoomCleared += HandleRoomCleared;
-            InitializeRoomCounts(); // O(1)
+            InitializeRoomCounts();
         }
 
         public bool Move(string direction, Player player)
@@ -113,7 +112,6 @@ namespace DungeonCrawlerV9
             if (!player.HasKey)
                 return true;
 
-            // player has key -> unlock door
             Console.WriteLine("You use a key to unlock the door.");
             door.Unlock();
             player.UseKey();
@@ -137,33 +135,6 @@ namespace DungeonCrawlerV9
         {
             return PlayerRow == rows - 1 && PlayerCol == cols - 1;
         }
-
-        //public void PrintUserPosition()
-        //{
-        //    for (int r = 0; r < rows; r++)
-        //    {
-        //        for (int c = 0; c < cols; c++)
-        //        {
-        //            Room room = Rooms[r, c];
-
-        //            if (PlayerRow == r && PlayerCol == c)
-        //            {
-        //                Console.Write($"[{room.Description}]");
-        //            }
-        //            else
-        //            {
-        //                Console.Write($"{room.Description}");
-        //            }
-
-        //            if (c < cols - 1)
-        //            {
-        //                Console.Write(", ");
-        //            }
-        //        }
-        //        Console.WriteLine();
-        //    }
-        //    Console.WriteLine();
-        //}
 
         public string[,] GetMapSnapshot()       //replaced PrintUserPosition()
         {
@@ -209,40 +180,10 @@ namespace DungeonCrawlerV9
             }
         }
 
-        //public void PrintUnclearedRooms_O1() // O(1)
-        //{
-        //    Console.WriteLine("Uncleared rooms (O(1) version):");
-        //    foreach (var kvp in unclearedCount)
-        //    {
-        //        Console.WriteLine($"{kvp.Key}: {kvp.Value}");
-        //    }
-        //}
-
         public IReadOnlyDictionary<RoomType, int> GetUnclearedCounts()      //replaced PrintUnclearedRooms_O1()
         {
             return unclearedCount;
         }
-
-
-        //private void SubscribeToRooms()
-        //{
-        //    for (int r = 0; r < rows; r++)
-        //    {
-        //        for (int c = 0; c < cols; c++)
-        //        {
-        //            Room room = Rooms[r, c];
-        //            //room.OnCleared += HandleRoomCleared;
-        //            //events.RoomCleared += HandleRoomCleared;
-        //        }
-        //    }
-        //}
-
-        //private void HandleRoomCleared(Room room) // O(1)
-        //{
-        //    if (!room.IsCleared) return; // safety check
-
-        //    unclearedCount[room.Type]--;
-        //}
 
         private void HandleRoomCleared(RoomClearedEvent e)
         {

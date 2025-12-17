@@ -21,17 +21,9 @@ namespace DungeonCrawlerV9
             Exp = exp;
         }
 
-        //public Monster(int maxHp, int power, int exp)
-        //{
-        //    MaxHp = maxHp;
-        //    Power = power;
-        //    Exp = exp;
-        //}
-
         public virtual void TakeDamage(int damage)
         {
             CurrentHp = Math.Max(CurrentHp - damage, 0);
-            //Console.WriteLine($"Monster recieved {damage} damage! Monster's HP: {CurrentHp}/{MaxHp}");
             events.Raise(new DamageEvent("Player", "Monster", damage, CurrentHp, MaxHp));
 
             if (IsDead())

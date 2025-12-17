@@ -36,7 +36,7 @@ namespace DungeonCrawlerV9
             ShowUnclearedRooms(dungeon.GetUnclearedCounts());
         }
 
-        //public string AskMove()       // replaced with two functions below, seemed to be more strict mvc (not sure if it's the best solution)
+        //public string AskMove()       // replaced with two functions below, seemed to be more strict mvc (not sure if it's the best solution) (Aviv?)
         //{
         //    Console.Write("\nWhere would you like to move? (up / down / left / right): ");
         //    return Console.ReadLine()?.Trim().ToLower();

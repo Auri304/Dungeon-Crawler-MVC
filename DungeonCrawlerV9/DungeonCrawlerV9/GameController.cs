@@ -57,7 +57,7 @@ namespace DungeonCrawlerV9
                 view.ShowStatus(player, dungeon);
 
                 var room = dungeon.Rooms[dungeon.PlayerRow, dungeon.PlayerCol];
-                bool alive = room.EnterRoom(player); // we’ll remove dungeon param later if you want
+                bool alive = room.EnterRoom(player);
 
                 if (!alive)
                 {
@@ -74,7 +74,7 @@ namespace DungeonCrawlerV9
                 {
                     //var dir = view.AskMove();
                     //moved = dungeon.Move(dir, player);
-                    /// 2 lines above replaced with lines below, seemed to be more strict mvc (not sure if it's the best solution)
+                    /// 2 lines above replaced with lines below, seemed to be more strict mvc (not sure if it's the best solution) Aviv?
                     view.ShowMovePrompt();
                     var dir = Console.ReadLine()?.Trim().ToLower();   // controller reads input (mvc teacher guidline)
                     moved = dungeon.Move(dir, player);

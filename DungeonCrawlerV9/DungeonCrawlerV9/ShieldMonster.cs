@@ -24,25 +24,10 @@
             {
                 CurrentShield--;
                 events.Raise(new GameMessage($"Shield absorbed damage! Remaining shield: {CurrentShield}"));
-                //Console.WriteLine($"Shield absorbed damage! Remaining shield: {CurrentShield}");
                 return;
             }
 
             base.TakeDamage(damage);
-
-            // --- damage points shield instead of per attack ---
-            //if (CurrentShield > 0)
-            //{
-            //    int absorbed = Math.Min(CurrentShield, damage);
-            //    CurrentShield -= absorbed;
-            //    damage -= absorbed;
-            //    Console.WriteLine($"Shield absorbed {absorbed} damage! Remaining shield: {CurrentShield}");
-            //}
-
-            //if (damage > 0)
-            //{
-            //    base.TakeDamage(damage);
-            //}
         }
 
         public override void Reset()

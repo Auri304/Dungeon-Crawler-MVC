@@ -18,7 +18,6 @@
             {
                 ExtraLives--;
                 base.Reset();
-                //Console.WriteLine($"The Elite Monster revives! Lives remaining: {ExtraLives}");
                 events.Raise(new GameMessage($"The Elite Monster revives! Lives remaining: {ExtraLives}"));
                 return false;
             }

@@ -2,8 +2,6 @@
 {
     public class LootSystem
     {
-        //public event Action<Loot> OnLootGenerated;    // replace with gameevents
-
         private LootSystem() { }
         private static LootSystem _instance;
         public static LootSystem Instance
@@ -36,18 +34,15 @@
 
         public void LootDeadEnemy(Monster enemy)
         {
-            //Console.WriteLine("[DEBUG] LootSystem.EnemyDied CALLED!");
             if (rng.NextDouble() > 0.9) return; // 50% drop chance => 90% for debugging
 
             Loot loot = GenerateLoot();
-            //Console.WriteLine("[DEBUG] Loot generated: " + (loot?.GetType().Name ?? "NULL"));
 
             if (loot == null) return;       // Safety - remove? 
             if (events == null)             // Safety - remove? 
                 throw new InvalidOperationException("LootSystem not initialized. Call LootSystem.Instance.Initialize(events) in GameController.");
 
             events.Raise(new LootGrantedEvent(loot));
-            //OnLootGenerated?.Invoke(loot);
         }
 
         private Loot GenerateLoot()

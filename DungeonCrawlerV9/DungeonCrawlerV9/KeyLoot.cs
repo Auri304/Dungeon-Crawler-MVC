@@ -6,7 +6,6 @@
 
         public override void Apply(Player player)
         {
-            //base.Apply(player);
             player.GainKey();
         }
     }
