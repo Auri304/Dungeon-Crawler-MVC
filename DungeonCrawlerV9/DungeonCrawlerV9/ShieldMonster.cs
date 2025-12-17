@@ -1,0 +1,54 @@
+﻿namespace DungeonCrawlerV9
+{
+    internal class ShieldMonster : Monster
+    {
+        private int MaxShield;
+        private int CurrentShield;
+
+        public ShieldMonster(int maxHp, int power, int exp, int shield, GameEvents events)
+            : base(maxHp, power, exp, events)
+        {
+            MaxShield = shield;
+            CurrentShield = shield;
+        }
+
+        public override void TakeDamage(int damage)
+        {
+            //if (IsDead())         //Do I need this? I have it in base
+            //{
+            //    //Console.WriteLine("The shielded monster is already dead!");
+            //    return;
+            //}
+
+            if (CurrentShield > 0)
+            {
+                CurrentShield--;
+                events.Raise(new GameMessage($"Shield absorbed damage! Remaining shield: {CurrentShield}"));
+                //Console.WriteLine($"Shield absorbed damage! Remaining shield: {CurrentShield}");
+                return;
+            }
+
+            base.TakeDamage(damage);
+
+            // --- damage points shield instead of per attack ---
+            //if (CurrentShield > 0)
+            //{
+            //    int absorbed = Math.Min(CurrentShield, damage);
+            //    CurrentShield -= absorbed;
+            //    damage -= absorbed;
+            //    Console.WriteLine($"Shield absorbed {absorbed} damage! Remaining shield: {CurrentShield}");
+            //}
+
+            //if (damage > 0)
+            //{
+            //    base.TakeDamage(damage);
+            //}
+        }
+
+        public override void Reset()
+        {
+            base.Reset();
+            CurrentShield = MaxShield;
+        }
+    }
+}
