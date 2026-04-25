@@ -42,30 +42,6 @@ This separation ensures that changes to the display don't break game logic, and 
 
 ---
 
-## 🚀 Getting Started
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Auri304/Dungeon-Crawler-MVC.git
-   ```
-2. Open the solution in **Visual Studio** (`.sln` file inside `DungeonCrawlerV9/`).
-3. Build and run the project.
-
----
-
-## 📁 Project Structure
-
-```
-Dungeon-Crawler-MVC/
-└── DungeonCrawlerV9/       # Main project folder
-    ├── Models/             # Game data and state
-    ├── Views/              # Output / rendering logic
-    ├── Controllers/        # Input handling and game loop
-    └── ...
-```
-
----
-
 ## 👩💻 Contributors
 
 - [@Auri304](https://github.com/Auri304)
